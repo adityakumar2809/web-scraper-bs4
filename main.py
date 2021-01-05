@@ -21,8 +21,13 @@ def scrape_hosted():
         'from': 'submit',
         'txtKeywords': 'Python'
     }
-    html_text = requests.get(url, params=payload)
-    print(html_text)
+    html_text = requests.get(url, params=payload).text
+    soup = BeautifulSoup(html_text, 'lxml')
+
+    jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
+    for job in jobs:
+        company_name = job.find('h3', class_='joblist-comp-name').text.strip()
+        print(company_name)
 
 
 if __name__ == "__main__":
