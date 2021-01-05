@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import requests
 
 
 def scrape_local():
@@ -14,7 +15,10 @@ def scrape_local():
 
 
 def scrape_hosted():
-    pass
+    html_text = requests.get('https://www.timesjobs.com/candidate/job-search.\
+        html?searchType=personalizedSearch&from=submit&txtKeywords=Python\
+        &txtLocation=')
+    print(html_text)
 
 
 if __name__ == "__main__":
