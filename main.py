@@ -40,9 +40,12 @@ def scrape_hosted():
                     class_='srp-skills'
                 ).text.split(',')]
 
+            job_url = job.header.h2.a['href']
+
             output_str = f'''
                           Company Name: {company_name}
                           Skills Required: {', '.join(skills)}
+                          More info: {job_url}
                           '''
 
             print(textwrap.dedent(output_str))
