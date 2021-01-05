@@ -32,7 +32,7 @@ def scrape_hosted():
                 'h3',
                 class_='joblist-comp-name'
             ).text.strip()
-            
+
             skills = [
                 x.strip() for x in job.find(
                     'span',
