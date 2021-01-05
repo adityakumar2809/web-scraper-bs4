@@ -6,9 +6,9 @@ def main():
         content = html_file.read()
 
         soup = BeautifulSoup(content, 'lxml')
-        courses_html_tags = soup.find_all('h5')
-        for course in courses_html_tags:
-            print(course.text)
+        course_cards = soup.find_all('div', class_='card')
+        for course_card in course_cards:
+            print(course_card.h5)
 
 
 if __name__ == "__main__":
