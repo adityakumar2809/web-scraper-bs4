@@ -26,14 +26,23 @@ def scrape_hosted():
 
     jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
     for job in jobs:
-        company_name = job.find('h3', class_='joblist-comp-name').text.strip()
-        skills = [
-            x.strip() for x in job.find(
-                'span',
-                class_='srp-skills'
-            ).text.split(',')]
-        print(skills)
-        break
+        published_date = job.find('span', class_='sim-posted').span.text
+        if published_date == 'Posted few days ago':
+            company_name = job.find(
+                'h3',
+                class_='joblist-comp-name'
+            ).text.strip()
+            
+            skills = [
+                x.strip() for x in job.find(
+                    'span',
+                    class_='srp-skills'
+                ).text.split(',')]
+
+            print(f'''
+                    Company Name: {company_name}
+                    Skills Required: {', '.join(skills)}
+            ''')
 
 
 if __name__ == "__main__":
