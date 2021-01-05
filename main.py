@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
 
-def main():
+def scrape_local():
     with open('index.html', 'r') as html_file:
         content = html_file.read()
 
@@ -13,5 +13,13 @@ def main():
             print(f'{course_name} costs {course_price}')
 
 
+def scrape_hosted():
+    pass
+
+
 if __name__ == "__main__":
-    main()
+    debug = False
+    if debug:
+        scrape_local()
+    else:
+        scrape_hosted()
