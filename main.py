@@ -15,9 +15,13 @@ def scrape_local():
 
 
 def scrape_hosted():
-    html_text = requests.get('https://www.timesjobs.com/candidate/job-search.\
-        html?searchType=personalizedSearch&from=submit&txtKeywords=Python\
-        &txtLocation=')
+    url = 'https://www.timesjobs.com/candidate/job-search.html'
+    payload = {
+        'searchType': 'personalizedSearch',
+        'from': 'submit',
+        'txtKeywords': 'Python'
+    }
+    html_text = requests.get(url, params=payload)
     print(html_text)
 
 
