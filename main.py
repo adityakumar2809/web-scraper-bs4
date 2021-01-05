@@ -7,6 +7,8 @@ def main():
 
         soup = BeautifulSoup(content, 'lxml')
         courses_html_tags = soup.find_all('h5')
+        for course in courses_html_tags:
+            print(course.text)
 
 
 if __name__ == "__main__":
