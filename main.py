@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import textwrap
 
 
 def scrape_local():
@@ -39,10 +40,12 @@ def scrape_hosted():
                     class_='srp-skills'
                 ).text.split(',')]
 
-            print(f'''
-                    Company Name: {company_name}
-                    Skills Required: {', '.join(skills)}
-            ''')
+            output_str = f'''
+                          Company Name: {company_name}
+                          Skills Required: {', '.join(skills)}
+                          '''
+
+            print(textwrap.dedent(output_str))
 
 
 if __name__ == "__main__":
